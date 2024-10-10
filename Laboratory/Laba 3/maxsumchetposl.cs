@@ -5,38 +5,30 @@ class Program
     static void Main()
     {
         Console.Write("Введите количество элементов: ");
-        int n = int.Parse(Console.ReadLine());
+        int n = Convert.ToInt32(Console.ReadLine());
 
-        int maxSum = int.MinValue;
-        int currentSum = 0;
-        bool chet = false;
-        
+        int maxSum = 0;
+        int currentSum = 0; 
+
         for (int i = 1; i <= n; i++)
         {
             Console.Write($"Введите элемент {i}: ");
-            int curr = int.Parse(Console.ReadLine());
+            int curr = Convert.ToInt32(Console.ReadLine());
 
             if (curr % 2 == 0)
             {
                 currentSum += curr;
-                chet = true;
             }
             else
             {
-                if (currentSum > maxSum)
-                {
-                    maxSum = currentSum;
-                }
+                maxSum = Math.Max(maxSum, currentSum);
                 currentSum = 0;
             }
         }
-        
-        if (currentSum > maxSum)
-        {
-            maxSum = currentSum;
-        }
 
-        if (chet)
+        maxSum = Math.Max(maxSum, currentSum);
+
+        if (maxSum > 0)
         {
             Console.WriteLine($"Максимальная сумма подпоследовательности из четных элементов: {maxSum}");
         }
