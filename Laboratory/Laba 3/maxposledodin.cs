@@ -5,18 +5,18 @@ class Program
     static void Main()
     {
         Console.Write("Введите количество элементов: ");
-        int n = int.Parse(Console.ReadLine());
+        int n = Convert.ToInt32(Console.ReadLine());
 
         Console.Write("Введите элемент 1: ");
-        int prev = int.Parse(Console.ReadLine());
-        
+        int prev = Convert.ToInt32(Console.ReadLine());
+
         int maxLength = 1;
         int currentLength = 1;
 
         for (int i = 2; i <= n; i++)
         {
             Console.Write($"Введите элемент {i}: ");
-            int curr = int.Parse(Console.ReadLine());
+            int curr = Convert.ToInt32(Console.ReadLine());
 
             if (curr == prev)
             {
@@ -24,20 +24,14 @@ class Program
             }
             else
             {
-                if (currentLength > maxLength)
-                {
-                    maxLength = currentLength;
-                }
+                maxLength = Math.Max(maxLength, currentLength);
                 currentLength = 1;
             }
 
             prev = curr;
         }
 
-        if (currentLength > maxLength)
-        {
-            maxLength = currentLength;
-        }
+        maxLength = Math.Max(maxLength, currentLength);
 
         Console.WriteLine($"Максимальная длина подпоследовательности из одинаковых элементов: {maxLength}");
     }
