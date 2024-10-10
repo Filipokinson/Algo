@@ -5,7 +5,7 @@ class Program
     static void Main()
     {
         Console.Write("Введите количество элементов: ");
-        int n = int.Parse(Console.ReadLine());
+        int n = Convert.ToInt32(Console.ReadLine());
 
         int prev = 0, curr = 0, next = 0;
         int localMinCount = 0;
@@ -13,7 +13,7 @@ class Program
         int max1 = int.MinValue, max2 = int.MinValue;
 
         Console.Write("Введите элемент 1: ");
-        prev = int.Parse(Console.ReadLine());
+        prev = Convert.ToInt32(Console.ReadLine());
         if (prev % 2 != 0)
         {
             allEven = false;
@@ -21,7 +21,7 @@ class Program
         max1 = prev;
 
         Console.Write("Введите элемент 2: ");
-        curr = int.Parse(Console.ReadLine());
+        curr = Convert.ToInt32(Console.ReadLine());
         if (curr % 2 != 0)
         {
             allEven = false;
@@ -39,7 +39,7 @@ class Program
         for (int i = 3; i <= n; i++)
         {
             Console.Write($"Введите элемент {i}: ");
-            next = int.Parse(Console.ReadLine());
+            next = Convert.ToInt32(Console.ReadLine());
 
             if (next % 2 != 0)
             {
