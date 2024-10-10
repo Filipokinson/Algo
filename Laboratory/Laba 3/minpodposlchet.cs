@@ -4,64 +4,41 @@ class Program
 {
     static void Main()
     {
-        Console.Write("Введите количество элементов: ");
-        int n = int.Parse(Console.ReadLine());
+        int n = Convert.ToInt32(Console.ReadLine());
+        int a;  
+        int currentLength = 0;
+        int minLength = n + 1;
 
-        Console.Write("Введите элемент 1: ");
-        int prev = int.Parse(Console.ReadLine());
-
-        int minLength = int.MaxValue;
-        int currentLength = 0; 
-        bool chet = false;
-        
-        if (prev % 2 == 0)
+        for (int i = 0; i < n; i++)
         {
-            currentLength = 1;
-            chet = true;
-        }
+            a = Convert.ToInt32(Console.ReadLine());
 
-        for (int i = 2; i <= n; i++)
-        {
-            Console.Write($"Введите элемент {i}: ");
-            int curr = int.Parse(Console.ReadLine());
-
-            if (curr % 2 == 0)
+            if (a % 2 == 0)
             {
-                if (prev % 2 == 0)
-                {
-                    currentLength++;
-                }
-                else
-                {
-                    currentLength = 1;
-                }
-
-                chet = true;
+                currentLength++;
             }
             else
             {
-                if (currentLength > 0 && currentLength < minLength)
+                if (currentLength > 0) 
                 {
-                    minLength = currentLength;
+                    minLength = Math.Min(currentLength, minLength);
                 }
                 currentLength = 0;
             }
-
-            prev = curr;
         }
 
-        if (currentLength > 0 && currentLength < minLength)
+        if (currentLength > 0) 
         {
-            minLength = currentLength;
+            minLength = Math.Min(currentLength, minLength); 
         }
 
-        if (chet)
+        if (minLength == n + 1)
         {
-            Console.WriteLine($"Минимальная длина подпоследовательности из четных элементов: {minLength}");
+            Console.WriteLine("Четных элементов в последовательности нет.");
         }
         else
         {
-            Console.WriteLine("Четных элементов в последовательности нет.");
+            Console.WriteLine($"Минимальная длина подпоследовательности из четных элементов: {minLength}");
         }
     }
 }
