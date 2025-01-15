@@ -1,58 +1,58 @@
 using System;
-using System.Collections.Generic;
 
 class Program
 {
-    static void Main()
+    static void Main(string[] args)
     {
-        var stroki = new List<string>();
-        string input;
-        Console.WriteLine("Введите строки (пустая строка для завершения):");
-        while (!string.IsNullOrEmpty(input = Console.ReadLine()))
+        //1: Определить количество строк, в которых присутствует сочетание "a*b"
+        string input = Console.ReadLine().ToLower();
+        int count = 0;
+        while (input != "")
         {
-            stroki.Add(input);
-        }
-
-        //1. количество строк, содержащих a*b
-        int schet = 0;
-
-        foreach (var line in stroki)
-        {
-            for (int i = 0; i < line.Length - 2; i++)
+            for (int i = 0; i < input.Length - 2; i++)
             {
-                if (char.ToLower(line[i]) == 'a' && char.ToLower(line[i + 2]) == 'b')
+                if (input[i] == 'a' && input[i + 2] == 'b')
                 {
-                    schet++;
-                    break;
+                    count++;
                 }
             }
+            Console.WriteLine(count);
+            count = 0;
+            input = Console.ReadLine();
         }
 
-        Console.WriteLine($"Количество строк с сочетанием a*b: {schet}");
-
-        //2. максимальная длина подстроки из сочетания abc
-        Console.WriteLine("Максимальная длина подстроки abc-like в каждой строке:");
-
-        foreach (var line in stroki)
+        //2: Определить максимальную длину подстроки, состоящей из "abc"
+        string input2 = Console.ReadLine();
+        int maxLength = 0;
+        while (input2 != "")
         {
-            int maxLength = 0;
+            input2 = input2.ToLower();
+            string temp = "a";
             int currentLength = 0;
 
-            foreach (char ch in line)
+            while (input2.Contains(temp))
             {
-                char lowerCh = char.ToLower(ch);
-                if (lowerCh == 'a' || lowerCh == 'b' || lowerCh == 'c')
+                currentLength++;
+                int len = temp.Length + 1;
+                if (len % 3 == 1)
                 {
-                    currentLength++;
-                    maxLength = Math.Max(maxLength, currentLength);
+                    temp += "a";
+                }
+                else if (len % 3 == 2)
+                {
+                    temp += "b";
                 }
                 else
                 {
-                    currentLength = 0;
+                    temp += "c";
                 }
             }
-
-            Console.WriteLine($"Строка: \"{line}\" -> Максимальная длина: {maxLength}");
+            maxLength = Math.Max(maxLength, currentLength);
+            Console.WriteLine(maxLength);
+            input2 = Console.ReadLine();
+            temp = "a";
+            maxLength = 0;
+            currentLength = 0;
         }
     }
 }
