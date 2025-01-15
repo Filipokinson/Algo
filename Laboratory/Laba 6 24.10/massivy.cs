@@ -60,22 +60,12 @@ class Program
                 bool isEqual = true;
                 for (int j = 0; j < n; j++)
                 {
-                    bool found = false;
-                    for (int k = 0; k < n; k++)
-                    {
-                        if (array[i1, j] == array[i2, k])
-                        {
-                            found = true;
-                            break;
-                        }
-                    }
-                    if (!found)
+                    if (array[i1, j] != array[i2, j])
                     {
                         isEqual = false;
                         break;
                     }
                 }
-
                 if (isEqual)
                 {
                     foundPair = true;
