@@ -146,7 +146,7 @@ class PhoneBook
 
         abonents[abonentCount] = abonent;
         abonentCount++;
-        Console.WriteLine("Абонент добавлен!");
+        Console.WriteLine("Абонент добавлен.");
     }
 
     public void SearchByOperator()
