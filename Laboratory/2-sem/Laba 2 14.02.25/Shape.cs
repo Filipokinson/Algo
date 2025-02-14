@@ -1,78 +1,78 @@
 using System;
 
-interface IФигура
+interface IFigura
 {
-    double Периметр();
-    double Площадь();
+    double Perimetr();
+    double Ploshad();
 }
 
-class Фигура
+class Figura
 {
-    public string Имя { get; set; }
+    public string Imya { get; set; }
 
-    public Фигура(string имя)
+    public Figura(string imya)
     {
-        Имя = имя;
-    }
-}
-
-class Круг : Фигура, IФигура
-{
-    public double Радиус { get; set; }
-
-    public Круг(string имя, double радиус) : base(имя)
-    {
-        Радиус = радиус;
-    }
-
-    public double Периметр()
-    {
-        return 2 * Math.PI * Радиус;
-    }
-
-    public double Площадь()
-    {
-        return Math.PI * Math.Pow(Радиус, 2);
+        Imya = imya;
     }
 }
 
-class Квадрат : Фигура, IФигура
+class Krug : Figura, IFigura
 {
-    public double ДлинаСтороны { get; set; }
+    public double Radius { get; set; }
 
-    public Квадрат(string name, double длинаСтороны) : base(name)
+    public Krug(string imya, double radius) : base(imya)
     {
-        ДлинаСтороны = длинаСтороны;
+        Radius = radius;
     }
 
-    public double Периметр()
+    public double Perimetr()
     {
-        return 4 * ДлинаСтороны;
+        return 2 * Math.PI * Radius;
     }
 
-    public double Площадь()
+    public double Ploshad()
     {
-        return Math.Pow(ДлинаСтороны, 2);
+        return Math.PI * Math.Pow(Radius, 2);
     }
 }
 
-class Треугольник : Фигура, IФигура
+class Kvadrat : Figura, IFigura
 {
-    public double ДлинаСтороны { get; set; }
+    public double DlinaStorony { get; set; }
 
-    public Треугольник(string имя, double длинаСтороны) : base(имя)
+    public Kvadrat(string name, double dlinaStorony) : base(name)
     {
-        ДлинаСтороны = длинаСтороны;
+        DlinaStorony = dlinaStorony;
     }
 
-    public double Периметр()
+    public double Perimetr()
     {
-        return 3 * ДлинаСтороны;
+        return 4 * DlinaStorony;
     }
 
-    public double Площадь()
+    public double Ploshad()
     {
-        return (Math.Sqrt(3) / 4) * Math.Pow(ДлинаСтороны, 2);
+        return Math.Pow(DlinaStorony, 2);
+    }
+}
+
+class Treugolnik : Figura, IFigura
+{
+    public double DlinaStorony { get; set; }
+
+    public Treugolnik(string imya, double dlinaStorony) : base(imya)
+    {
+        DlinaStorony = dlinaStorony;
+    }
+
+    public double Perimetr()
+    {
+        return 3 * DlinaStorony;
+    }
+
+    public double Ploshad()
+    {
+        return (Math.Sqrt(3) / 4) * Math.Pow(DlinaStorony, 2);
     }
 }
 
@@ -80,12 +80,12 @@ class Программа
 {
     static void Main()
     {
-        Круг круг = new Круг("Круг", 5);
-        Квадрат квадрат = new Квадрат("Квадрат", 4);
-        Треугольник треугольник = new Треугольник("Равносторонний треугольник", 3);
+        Krug krug = new Krug("Круг", 5);
+        Kvadrat kvadrat = new Kvadrat("Квадрат", 4);
+        Treugolnik treugolnik = new Treugolnik("Равносторонний треугольник", 3);
 
-        Console.WriteLine($"{круг.Имя} - Периметр: {круг.Периметр()}, Площадь: {круг.Площадь()}");
-        Console.WriteLine($"{квадрат.Имя} - Периметр: {квадрат.Периметр()}, Площадь: {квадрат.Площадь()}");
-        Console.WriteLine($"{треугольник.Имя} - Периметр: {треугольник.Периметр()}, Площадь: {треугольник.Площадь()}");
+        Console.WriteLine($"{krug.Imya} - Периметр: {krug.Perimetr()}, Площадь: {krug.Ploshad()}");
+        Console.WriteLine($"{kvadrat.Imya} - Периметр: {kvadrat.Perimetr()}, Площадь: {kvadrat.Ploshad()}");
+        Console.WriteLine($"{treugolnik.Imya} - Периметр: {treugolnik.Perimetr()}, Площадь: {treugolnik.Ploshad()}");
     }
 }
