@@ -76,7 +76,7 @@ class Treugolnik : Figura, IFigura
     }
 }
 
-class Программа
+class Programma
 {
     static void Main()
     {
